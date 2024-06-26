@@ -1,0 +1,39 @@
+namespace:
+  name: rusulkhanishvili
+
+deployment:
+  name: web-server-rusulkhanishvili
+  image:
+    repository: nginx
+    tag: latest
+  containerPort: 80
+
+serviceAccount:
+  name: rusulkhanishvili-sa
+
+configMap:
+  name: rusulkhanishvili-cm
+  indexHtml: |
+    <html>
+      <head><title>RuSulkhanishviliFinal Project</title></head>
+      <body>
+        <h1>Welcome to RuSulkhanishviliFinal Project!</h1>
+      </body>
+    </html>
+service:
+  name: rusulkhanishvili-svc
+  port: 80
+  targetPort: 80
+
+role:
+  name: rusulkhanishvili-role
+
+roleBinding:
+  name: rusulkhanishvili-rolebinding
+
+virtualService:
+  name: rusulkhanishvili-vs
+  gateway: rusulkhanishvili-gateway
+
+labels:
+  app: rusulkhanishvili-app
